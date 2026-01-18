@@ -1,0 +1,76 @@
+image: maven:3.8.3-openjdk-17
+definitions:
+  services:
+    docker:
+      memory: 1024
+
+  steps:
+    - step: &BuildAndPushVersion
+        name: Build Image Push to ECR
+        deployment: Staging
+        image: atlassian/default-image:4 # use different image for this step
+        services:
+          - docker
+        script:
+          - export BITBUCKET_USER_SLUG=$(git log -1 --pretty=format:%an)
+          - export IMAGE_TAG=${BITBUCKET_COMMIT:0:7}
+          - export space=" "
+          - export IMAGE_NAME="enabel"
+          - export PROJECT_ID="enabel"
+          - echo "${IMAGE_TAG}"
+          - echo "${IMAGE_NAME}"
+          # exit pipeline when bitbucket-pipelines user push a commit
+
+          - if [[ $BITBUCKET_USER_SLUG == "bitbucket-pipelines" ]]; then exit 0; fi
+          # build and push images
+          # - /bin/bash build.sh
+          # build dockerfile
+          - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+          - echo "Create ECR repository..."
+          - aws ecr create-repository --region ${AWS_DEVELOPEMENT_REGION} --repository-name ${IMAGE_NAME} --profile ecr 2>&1 | grep -q "RepositoryAlreadyExistsException" && echo "Repository already exists." || echo "Repository created successfully."
+        
+          
+          - echo "Push image to ECR...."
+          - pipe: atlassian/aws-ecr-push-image:2.0.0
+            variables:
+              AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY}
+              AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_KEY}
+              AWS_DEFAULT_REGION: ${AWS_DEVELOPEMENT_REGION}
+              IMAGE_NAME: ${IMAGE_NAME}
+              TAGS: "$IMAGE_TAG"
+          - cd argocd
+          - sed -i " s|image:.*|image:${space}${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEVELOPEMENT_REGION}.amazonaws.com/${IMAGE_NAME}:${IMAGE_TAG}|g" deployment.yaml
+       
+          - git add .
+          - git commit -m "update:${space}image tag to ${IMAGE_TAG}"
+          - git pull
+          - git push
+          - cd ..
+
+          
+    
+    - step: &Sonar
+        name: Sonar Scan
+        script:
+          - export BITBUCKET_USER_SLUG=$(git log -1 --pretty=format:%an)
+          - export IMAGE_NAME="enabel"
+          # exit pipeline when bitbucket-pipelines user push a commit
+          - if [[ $BITBUCKET_USER_SLUG == "bitbucket-pipelines" ]]; then exit 0; fi
+          - pipe: sonarsource/sonarqube-scan:2.0.0
+            variables:
+              SONAR_HOST_URL: ${SONAR_HOST_URL}
+              SONAR_TOKEN: ${SONAR_TOKEN}
+              EXTRA_ARGS: -Dsonar.projectKey=${IMAGE_NAME} -Dsonar.login=${SONAR_USER} -Dsonar.password=${SONAR_PASSWORD}  -Dsonar.java.binaries=target/classes -Dsonar.inclusions=src/main/java/**/*.java -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml -Dsonar.junit.reportPaths=target/surefire-reports #-Dsonar.testExecutionReportPaths=target/testng-results.xml
+    
+
+
+
+pipelines:
+  branches:
+    release/dev:
+      #- step: *Sonar
+      # - step: *Snyk
+      - step: *BuildAndPushVersion
+
+options:
+  docker: true

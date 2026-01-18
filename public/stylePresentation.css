@@ -1,0 +1,195 @@
+/* Layout Components */
+.flex-container {
+  display: flex;
+  gap: 50px;
+}
+
+.flex-container .div1 {
+  width: 70%;
+  font-size: 30px;
+  text-align: justify;
+}
+
+.flex-container .div2 {
+  width: 30%;
+}
+
+/* Text Components */
+.snippet {
+  --max-lines: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;    
+  -webkit-box-orient: vertical;
+}
+
+.texte {
+  padding: 40px 0 20px;
+  font-family: 'Poppins';
+  color: #296333;
+}
+
+/* Card Components */
+.hover-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  width: 250px;
+  background-color: rgb(5, 138, 98);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.hover-card:hover {
+  background-color: hsl(31, 77%, 52%);
+  transform: translateY(-5px);
+}
+
+.card-custom {
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Icon Components */
+.icon-text-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.icon {
+  font-size: 48px;
+  margin-right: 16px;
+  color: white;
+}
+
+/* Form Components */
+.input_box {
+  width: 100%;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  margin-top: 30px;
+  position: relative;
+}
+
+.input_box input,
+.input_box textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.input_box input {
+  font-size: 19px;
+  padding: 7px 0;
+  line-height: 10px;
+}
+
+.input_box textarea {
+  height: 30px;
+}
+
+.input_box label {
+  position: absolute;
+  left: 0;
+  font-size: 20px;
+  font-weight: 200;
+  top: 8px;
+  pointer-events: none;
+  transition: 0.2s;
+}
+
+.input_box input:focus,
+.input_box label {
+  top: -15px;
+  font-size: 18px;
+  color: black;
+}
+
+/* Search Components */
+.searchdiv {
+  display: flex;
+  gap: 2px;
+  width: 100%;
+}
+
+.search-inpute {
+  flex: 6;
+  padding: 8px 32px 8px 8px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+  background: url('data:image/png;base64,...') no-repeat right 10px center;
+  background-size: 16px;
+}
+
+.dropdowne {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+}
+
+/* Pagination */
+.custom-pagination .page-link {
+  color: green;
+  border-color: green;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.85rem;
+}
+
+.custom-pagination .page-link:hover {
+  color: white;
+  background-color: green;
+  border-color: green;
+}
+
+.custom-pagination .page-item.active .page-link {
+  color: white;
+  background-color: green;
+  border-color: green;
+}
+
+/* Map */
+.leaflet-right,
+.leaflet-popup-close-button {
+  display: none !important;
+}
+.flex-container .container .act .image {
+  width: 20px; height: 71px;
+}
+/* Media Queries */
+@media (max-width: 768px) {
+  .containerr,
+  .flex-container {
+      display: block;
+  }
+
+  .flex-container div,
+  .flex-container .div1,
+  .flex-container .div2 {
+      width: 100%;
+  }
+
+  .flex-container .container .act {
+      overflow: visible;
+      display: block;
+  }
+
+  .flex-container .container .act img {
+      width: 100%;
+      padding-bottom: 10px;
+  }
+  .flex-container .container .act .image {
+   height: 71px;
+   width: 100%;
+  }
+  
+}

@@ -1,0 +1,1648 @@
+
+/* navbar */
+html,body{
+    overflow-x: hidden !important;
+}
+body {
+    font-family: 'Poppins';
+}
+ /* Top Navigation Bar */
+ .top-nav {
+    background-color:#008D40;
+
+    color: white;
+    padding-top: 10px;
+    text-align: right;
+}
+
+.top-nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 13px !important;
+}
+
+.top-nav a:hover {
+    text-decoration: underline;
+    color: #FCD605;
+
+}
+
+.top-nav select {
+    background-color:#008D40;
+
+    color: white;
+    border: none;
+    padding: 5px;
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 13px !important;
+}
+.top-nav select:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.top-nav select:active {
+    outline: none;
+    border: none;
+}
+.top-nav .dropdown-item {
+    background-color: #008D40 !important;
+}
+#navbar-color {
+    background-color: #0DA853;
+}
+
+#collapsibleNavbar {
+    background-color: #0DA853;
+}
+
+.navbar {
+    z-index: 2;
+    height: 80px;
+}
+
+.navbar-nav {
+    margin: auto;
+    flex: 1;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.nav-link {
+    margin-left: 30px;
+    font-weight: bold;
+    color: white;
+    transition: 0.5s ease;
+    cursor: pointer;
+    font-family: 'Inter';
+    font-weight: 400;
+}
+
+.nav-link:hover {
+    color: #FCD605;
+}
+
+.nav-item.active .nav-link {
+    background-color: transparent;
+    color: #FCD605 !important;
+    font-weight: bold;
+}
+
+.nav-item a {
+
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 13px !important;
+}
+
+.dropdown-menu {
+    background-color: #0DA853 !important;
+    border: none;
+    left: auto !important;
+}
+
+.dropdown-item {
+    font-family: 'Inter';
+    font-weight: 400 !important;
+    font-size: 14px;
+    color: white !important;
+    background-color: #0DA853 !important;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 8px 16px !important;
+}
+
+.dropdown-item:hover {
+    color: #FCD605 !important;
+}
+
+.dropdown-item.active {
+    background-color: #0DA853 !important;
+    color: #FCD605 !important;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35.5px;
+}
+
+.logo img {
+    height: 66px;
+    width: 100px;
+}
+
+.dropdown-submenu .dropdown-menu {
+    display: none; /* Hide by default */
+    position: relative;
+    top: 0;
+    left: 100%;
+    margin-top: -8px;
+    margin-left: 0;
+    border-left: 2px solid #FCD605;
+    flex-direction: column; /* Ensure items are stacked vertically */
+}
+.dropdown-submenu:hover .dropdown-menu {
+    display: flex; /* Use flex to stack items vertically */
+}
+
+/* Adjust nested dropdown items */
+.dropdown-submenu .dropdown-item {
+    white-space: nowrap; /* Prevent text wrapping */
+    padding: 8px 16px; /* Add padding for better spacing */
+}
+#sbmn{
+    margin-top: 33px;
+}
+@media (max-width: 768px) {
+    .navbar {
+        height: auto;
+        
+    }
+
+    .navbar-nav {
+        margin: 0;
+        text-align: left;
+    }
+
+    .nav-link {
+        margin-left: 0;
+        padding: 10px 15px;
+    }
+
+    .dropdown-menu {
+        position: static !important;
+        margin-top: 0;
+    }
+
+    
+    .dropdown-submenu .dropdown-menu {
+        position: static !important; /* Reset positioning for mobile */
+        margin-left: 20px; /* Add indentation for nested items */
+        border-left: none; /* Remove border on mobile */
+    }
+    #sbmn{
+        margin-top: 0px;
+    } 
+}
+/* navbar */
+/* slider */
+/* Full-screen slider container */
+.slider-container {
+    z-index: 1;
+    position: relative;
+    height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Each slide */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide.prev {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+/* Ensure smooth transition between slides */
+.slide.next {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.slide.transition {
+    transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
+}
+
+/* Content inside the slide */
+.content {
+    color: white;
+    text-align: start;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    flex-direction: column; /* Align children vertically */
+    justify-content: center; /* Center vertically */
+    padding: 20px;
+}
+
+.content h1 {
+    font-family: 'Poppins';
+    font-size: 30px;
+    width: 600px;
+    line-height: 60px;
+}
+
+.content p {
+    font-size: 15px;
+    font-weight: 300;
+    font-family: 'Poppins';
+    line-height: 32px;
+    text-align: justify;
+    width: 600px;
+
+    margin-bottom: 20px;
+}
+
+.arrow-button {
+    position: relative; /* Set relative positioning to contain the arrow */
+    display: flex; /* Flexbox for text alignment */
+    align-items: center;
+    padding: 15px 22px;
+    font-size: 16px;
+    color: white;
+    background-color:#0DA853;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    text-align: center;
+    width: 140px;
+    height: 50px;
+    z-index: 10; 
+    font-family: 'Inter';
+}
+
+.arrow-button:hover {
+    background-color: #FCD605;
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.arrow {
+    position: absolute; /* Position arrow independently */
+    right: 20px; 
+    font-size: 18px;
+    transition: transform 0.3s;
+}
+
+.arrow-button:hover .arrow {
+    transform: translateX(5px); /* Slide the arrow slightly to the right */
+}
+.arrow-button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.arrow-button:active {
+    outline: none;
+    border: none;
+}
+
+/* Slider buttons */
+.slider-buttons {
+    position: absolute;
+    bottom: 5px;
+    align-items: center;
+    right: 12%;
+    z-index: 10;
+    display: flex;
+    gap: 10px;
+    height: 150px;
+    width: 160px;
+}
+.slider-buttons button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.slider-buttons button:active {
+    outline: none;
+    border: none;
+}
+
+.slider-buttons button {
+    background-color: transparent;
+    color: white;
+    opacity:0.6;
+    border-style: solid;
+    border-color: white ;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+    height: 40%;
+    width: 40%;
+    transition: background-color 0.3s;
+}
+
+.slider-buttons button:hover {
+    background-color:#FCD605;
+}
+.bt-counter{
+    color: white;
+    opacity:0.6;
+}
+
+
+
+/* slider */
+/* acualite */
+.acualite {
+    display: flex; /* Flexbox for text alignment */
+    align-items: center; /* Center content vertically */
+    justify-content: space-between;
+    padding-top: 50px; /* Center the text horizontally */
+    padding-bottom: 20px; /* Center the text horizontally */
+
+
+
+}
+.acualite h1{
+    font-size: 26px;
+    margin-left: 10px;
+    font-weight: 500;
+    line-height: 10%;
+    letter-spacing: 1.5px;
+}
+.acualite-button {
+
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 30px;
+    font-size: 15px;
+    color: #0DA853;
+    background-color: transparent;
+    border: 1px solid #0DA853;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    height: 40px;
+    z-index: 10;
+    font-weight: 500;
+    gap: 10px;
+}
+.acualite-button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.acualite-button:active {
+    outline: none;
+    border: none;
+}
+/* RTL specific styles */
+.rtl-button {
+    flex-direction: row-reverse;
+}
+
+.rtl-button .arrow {
+    margin-right: auto;
+}
+
+/* LTR specific styles */
+.ltr-button {
+    flex-direction: row;
+}
+
+.ltr-button .arrow {
+    margin-left: auto;
+}
+
+.acualite-button:hover {
+    background-color: #FCD605;
+    transform: scale(1.05);
+}
+
+.acualite_arrow {
+   
+    font-size: 18px;
+    transition: transform 0.3s;
+}
+
+.arrow-button:hover .arrow {
+    transform: translateX(5px); /* Slide the arrow slightly to the right */
+}
+/* acualite */
+/* card */
+/* Container for the cards */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Three cards per row */
+    gap: 20px; /* Space between cards */
+    padding-top: 20px;
+}
+
+/* Individual card */
+.card {
+    border: none !important; /* Ensure no border is applied */
+    box-shadow: none !important; 
+    padding: 0;
+    text-align: start;
+    transition: transform 0.3s;
+}
+
+/* Hover effect on card */
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Square image */
+.card-image {
+    width: 100%;
+    aspect-ratio: 1; /* Makes the image square */
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+/* Title */
+.card-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* Description */
+.card-description {
+    font-size: 12px;
+    line-height: 2;
+    color: #666;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+/* Button */
+.card-button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.card-button:active {
+    outline: none;
+    border: none;
+}
+.card-button {
+    display: inline-flex;
+    align-items: center;
+    color:rgb(219 71 70);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    gap: 10px;
+    padding-left: 0px;
+}
+
+.card-button:hover {
+    color:#0DA853
+}
+
+/* Icon inside button */
+.card-icon {
+    margin-left: 5px;
+    font-size: 14px;
+    transition: transform 0.3s;
+}
+
+.card-button:hover .card-icon {
+    transform: translateX(5px); /* Slide icon slightly to the right */
+}
+
+/* Responsive layout */
+
+/* card */
+/* mots directeur */
+/* Outer container for both divs */
+.mot_direct {
+    padding-top: 70px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 140px; /* Full viewport height */
+    /* Full viewport height */
+
+}
+
+/* Content div (green background with text) */
+.desc {
+    display: flex;
+    flex-direction: column;
+    justify-items: start;
+    justify-content: center;
+    background-color:#0DA853;
+    color: white;
+    width: 85%;
+    min-height: 300px;
+    padding: 60px 40px;
+    z-index: 1; /* Lower z-index to place under the image */
+    row-gap: 10px;
+}
+
+/* Title and Description */
+.title {
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    font-family: 'Inter';
+    width: 60%;
+
+    
+}
+.descr{
+    width: 60%;
+}
+.description {
+    font-family: 'Inter';
+    text-align: justify;
+    
+    
+}
+.desc h6{
+    font-weight: 100 ;
+    font-size: 20px ;
+    text-transform : uppercase;
+    letter-spacing: 3px;
+    width: 60%;
+}
+/* Solid border */
+hr.solid {
+    
+    width: 90%; /* Keeps the width of the divider */
+    height: 1px; /* Thin horizontal line */
+    background-color: white; /* Matches the container's style */
+    opacity: 1;
+    border: none;
+    margin: 10px 0 10px 0;  /* Adds spacing around the divider */
+   
+    
+}
+
+/* Text button */
+.text-button {
+    display: inline-flex;
+    align-items: center;
+    color:#FFFFFF;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    border-style: none;
+    outline: none;
+    button:focus {outline:0;}
+}
+.text-button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.text-button:active {
+    outline: none;
+    border: none;
+}
+
+
+/* Icon inside button */
+.text-icon {
+    margin-left: 5px;
+    font-size: 16px;
+    transition: transform 0.3s;
+}
+
+
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff !important;
+    background-color: #0DA853 !important;
+    border-color: #0DA853 !important;
+}
+.page-link {
+    color: #0DA853 !important;
+}
+
+/* Image container */
+.image-container {
+    width: 450px;
+    height:550px;
+    position: absolute; /* Position it absolutely in the container */
+    top: 110px; /* Adjust based on where you want it */
+    right: 0px; /* Adjust based on where you want it */
+    z-index: 10; /* Higher z-index to ensure image is on top */
+    object-fit: cover;
+}
+[dir="rtl"] .image-container {
+    right: auto;
+    left: 0px;
+}
+/* Image styling */
+.image {
+    width: 400px;
+    height: 400px;
+    min-height: 40%;
+    
+}
+
+/* mots directeur */
+/* evenement */
+
+.event-card-container {
+    display: flex;
+    gap: 20px; /* Space between cards */
+    padding-top: 20px;
+}
+.event-group{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; /* Space between cards */
+
+}
+
+.event-card {
+    display: flex;
+    justify-content: end;
+    flex-direction: column; /* Stack items vertically */
+    background-color: white;
+    border: none !important; /* Ensure no border is applied */
+    box-shadow: none !important; 
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+
+.event-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Image container stays at the top */
+.event-image-container {
+    width: 100%; /* Full card width */
+    height: 150px;
+    position: relative; /* For positioning the icon */
+    overflow: hidden;
+    flex-shrink: 0; /* Prevents resizing when content grows */
+}
+
+.event-image {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+/* Icon stays in the bottom-left corner of the image */
+.icon-container {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    object-fit: fill;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    width: 70px;
+    
+}
+.event-date{
+    font-family: 'Heebo';font-weight: 500; color: #DB4746; 
+}
+.event-title{
+    font-family: 'IBM Plex Sans Condensed';font-size: 22px;font-weight: 700; color: #042B05B0;opacity: 67%;
+}
+.event-description{
+    font-family: 'Heebo';font-size: 16px;font-weight:300;
+    text-align: justify;
+}
+/* Content */
+.event-head {
+    display: flex;
+    justify-content: end;
+    align-items: flex-start;
+    flex-direction: column;
+    background-color: white;
+    border: none !important;
+    box-shadow: none !important; 
+    overflow: hidden;
+    transition: transform 0.3s;
+    gap: 20px;
+    width: 100%;
+}
+
+.event-head.rtl {
+    flex-direction: column;
+    text-align: right;
+}
+
+.event-head:hover {
+    transform: translateY(-5px);
+}
+
+.event-head-content {
+    /* flex: 1; */
+    gap: 15px;
+}
+
+.event-button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.event-button:active {
+    outline: none;
+    border: none;
+}
+
+.event-button {
+    padding: 8px 14px 8px 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-family: 'Heebo';
+    font-weight: 350;
+    color: white;
+    background-color: #0DA853;
+    border: 3px solid #0DA853;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    text-align: center;
+    width: 250px;
+    height: 50px;
+    z-index: 10;
+}
+
+.event-head.rtl .event-button {
+    flex-direction: column-reverse;
+    padding: 8px 10px 8px 14px;
+}
+
+.event-button:hover {
+    background-color: #FCD605;
+    border-color: #FCD605;
+}
+
+.event-arrow {
+    position: absolute;
+    right: 17px;
+    font-size: 21px;
+}
+
+.event-head.rtl .event-arrow {
+    right: auto;
+    left: 17px;
+}
+
+.arrow-button:hover .arrow {
+    transform: translateX(5px);
+}
+
+.event-head-label {
+    font-family: 'Heebo';
+    font-size: 16px;
+    font-weight: 100;
+    letter-spacing: 3px;
+}
+
+.event-head-title {
+    font-family: 'IBM Plex Sans Condensed';
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.event-head-desc {
+    font-family: 'Heebo';
+    font-size: 16px;
+    font-weight: 400;
+    text-align: justify;
+}
+
+.slider-buttons-event:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.slider-buttons-event:active {
+    outline: none;
+    border: none;
+}
+.slider-buttons-event {
+    display: flex;
+    justify-content: end; /* Center the buttons horizontally */
+    gap: 20px; /* Space between buttons */
+    margin-top: 25px; /* Add spacing between the cards and buttons */
+    margin-bottom: 40px;
+}
+
+.slider-button-event {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 16px;
+    color:  rgb(0, 122, 61);
+    background-color:transparent;
+    border: 1px ;
+    font-family: 'Heebo';
+
+    border-style: solid;
+    border-color:  rgb(0, 122, 61);
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-weight: 500;
+    height: 40px;
+    gap: 10px;
+}
+
+.slider-button-event:hover {
+    background-color: #FCD605;
+    border-color: #FCD605;
+    transform: scale(1); /* Slight zoom effect */
+}
+
+.slider-button-event:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.slider-button-event:active {
+    outline: none;
+    border: none;
+}
+
+
+
+/* evenement */
+/* document-screen */
+
+.document-screen {
+    height: auto;
+    max-width: 100%;
+    background-color:#F5F8FA; /* Change this to your desired background color */
+    display: flex;
+    flex-direction: column;
+    align-content: start;
+    align-items: center;
+    padding-bottom: 50px;
+}
+
+.document-content {
+   
+    text-align: start;
+    z-index: 1;
+    display: flex;
+    flex-direction: column; /* Align children vertically */
+    align-items: center; /* Center vertically */
+    padding-top: 120px;
+    margin-bottom: 20px; /* Adjust spacing between content and the "document" div */
+}
+
+.document-title {
+    font-size:30px;;
+    font-family: 'Poppins';
+    color: #000000;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.document-text {
+    text-align: center;
+    font-size: 20px;
+    width: 76%;
+    font-family: 'Poppins';
+    color: #000000;
+    font-weight: 290;
+
+}
+.document {
+    display: flex;
+    align-content: start;
+    justify-content: space-between;
+    width: 100%; /* Ensure full width */
+    margin-top: 30px;
+    gap: 0; 
+}
+
+.document .card {
+    flex: 1;
+    margin: 0; /* Remove any margin */
+    padding: 0 15px; 
+    background-color:transparent;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.document .card-image {
+    
+    background-size: contain;
+    background-position: center;
+    border-radius: 20px;
+    height: 400px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.document .card-content {
+    text-align: center;
+    color: #fff;
+    background:transparent;
+    padding: 10px;
+    width: 100%;
+    position: absolute;
+}
+
+.document .card-date {
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.document .card-title {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.document .card-desc {
+    font-size: 1rem;
+}
+
+.document .card-footer {
+    background:transparent;
+    border-top: none !important;
+    text-align: start;
+}
+
+.document .footer-title {
+    font-size: 1.2rem;
+    margin: 0 0 10px;
+}
+.document-slider {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    gap: 0; /* Remove any gap */
+    width: 100%;
+}
+
+.doc-slide {
+    min-width: 33.333%;
+    transition: transform 0.3s ease;
+    padding: 0;
+}
+
+.document-slider-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+.document-card-container {
+    display: none;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding-top: 20px;
+}
+
+.document-card-container.active {
+    display: grid;
+}
+
+
+
+
+/* document-screen */
+/* projet-screen */
+
+.projet-screen {
+    height: auto;
+    max-height: 100%;
+    background-color:white; /* Change this to your desired background color */
+    display: flex;
+    flex-direction: column;
+    align-content: start;
+    align-items: center;
+}
+
+.projet-content {
+   
+    text-align: start;
+    z-index: 1;
+    display: flex;
+    flex-direction: column; /* Align children vertically */
+    align-items: center; /* Center vertically */
+    padding-top: 120px;
+
+    margin-bottom: 23px; /* Adjust spacing between content and the "document" div */
+}
+
+.projet-title {
+    font-size:30px;;
+    font-family: 'Poppins';
+    color: #000000;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.projet-text {
+    text-align: center;
+    font-size: 20px;
+    width: 76%;
+    font-family: 'Poppins';
+    color: #000000;
+    font-weight: 290;
+
+}
+/* Container for the cards */
+.projet-card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three cards per row */
+    gap: 20px; /* Space between cards */
+    padding-top: 20px;
+}
+
+/* Individual card */
+.projet-card {
+    border: none !important; /* Ensure no border is applied */
+    box-shadow: none !important; 
+    padding: 0;
+    text-align: start;
+    transition: transform 0.3s;
+}
+.projet-card-container {
+    display: none; /* Hide all containers by default */
+    transition: opacity 0.5s ease;
+}
+
+.projet-card-container.active {
+    display: grid; /* Show the active container */
+}
+
+
+/* Square image */
+.projet-card-image {
+    width: 100%;
+    aspect-ratio: 2; /* Makes the image square */
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    height: 250px;
+}
+
+/* Title */
+.projet-card-title {
+    font-size: 21px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-family: 'Poppins';
+}
+
+/* Description */
+.projet-card-description {
+    font-size: 16px;
+    color: #666;
+    font-family: 'Poppins';
+text-align: justify;
+    margin-bottom: 15px;
+}
+
+/* Button */
+.projet-card-button {
+    display: inline-flex;
+    align-items: center;
+    color:rgb(219 71 70);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+.projet-card-button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.projet-card-button:active {
+    outline: none;
+    border: none;
+}
+.projet-card-button:hover {
+    color:#0DA853
+}
+
+/* Icon inside button */
+.projet-card-icon {
+    margin-left: 5px;
+    font-size: 16px;
+    transition: transform 0.3s;
+}
+
+.projet-card-button:hover .card-icon {
+    transform: translateX(5px); /* Slide icon slightly to the right */
+}
+.projet-slider-button-container {
+    display: flex;
+    justify-content: center; /* Centers the buttons horizontally */
+    align-items: center; /* Aligns buttons vertically if needed */
+    margin-top: 30px; /* Adjust spacing from the content above */
+    gap: 10px; /* Space between the buttons */
+}
+
+.projet-slider-button {
+    background-color: transparent;
+    /* color: #3D586D; */
+    opacity:30%;
+    border-style: solid;
+    border-color:#3D586D ;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    height: 50px;
+    width: 50px;
+}
+
+.projet-slider-button:hover {
+    color: #DB4746; /* Hover effect */
+    border-color: #DB4746; /* Hover effect */
+    opacity: 1;
+}
+.projet-slider-button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.projet-slider-button:active {
+    outline: none;
+    border: none;
+}
+
+/* projet-screen */
+
+/* logo-screen */
+/* Styling the main section */
+.logo-section {
+    text-align: center;
+    margin: 50px auto;
+}
+
+/* Styling the title */
+.logo-title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 80px;
+    font-family: 'Inter';
+}
+
+/* Container for the two columns */
+.logo-container {
+    display: flex;
+    flex-direction: column; /* Stack rows vertically */
+    gap: 20px; /* Space between rows */
+    justify-content: center;
+    align-items: center;/* Space between columns */
+}
+
+/* Styling each column */
+.logo-column {
+    width: 100%;
+    display: flex;
+    flex-direction: row; /* Stack logos vertically */
+    justify-content: space-between; 
+    gap: 15px; /* Space between logos */
+    padding: 15px;
+}
+
+/* Styling the logo images */
+.logo-image {
+    width: 100px; /* Adjust size as needed */
+    height: 100px;
+    object-fit: contain; /* Ensures logos are not distorted */
+}
+
+/* logo-screen */
+/* links-screen */
+/* Main container */
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Three cards per row */
+    gap: 20px; /* Space between cards */
+    padding-top: 20px;
+    
+}
+
+/* Styling each item */
+.wrapper .item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%; /* Width for each item */
+   padding-right: 10px;
+    padding-left: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+ 
+    background-color: #FFFFFF;
+    border-radius: 10px;
+}
+
+/* Arrow button styling */
+.wrapper .arrowe-button {
+   background-color: transparent;
+  
+    color:#007A3D;
+    border: none;
+    padding-right: 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.wrapper .arrowe-button:hover {
+   color:#FCD605;
+}
+
+/* Item content (icon + text) */
+.wrapper .item-content {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between icon and text */
+}
+
+/* Icon styling */
+.wrapper .icon {
+
+    width: 30px; /* Size of the icon */
+    height: auto;
+    object-fit: contain;
+}
+
+/* Text styling */
+.wrapper .text {
+    font-size: 18px;
+    font-weight: 500;
+    color: #0DA853;
+    font-family: 'Poppins';
+}
+
+/* links-screen */
+/* carre-screen */
+/* Main container - square layout */
+
+.square-container {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-template-rows: repeat(2, 1fr); 
+    gap: 0px; /* Space between items */
+    width: 100%; /* Fixed square size */
+    height: 100%; /* Same height as width to make it square */
+    background-color:#ffffff;
+    border-radius: 20px; /* Optional: rounded corners */
+    overflow: hidden;
+   
+}
+
+/* Styling each item inside the square */
+.square-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+/* Image item styling */
+.image-item {
+    background-color: #e0e0e0;
+    
+}
+
+.square-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+   
+}
+.square-text{
+    height: 100%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+/* Content item styling */
+.content-item {
+    background-color: #fff;
+    
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.square-title {
+    font-size: 23px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family:'Raleway';
+}
+
+.square-description {
+    font-size: 14px;
+    width: 90%;
+    font-family:'Open Sans';
+    margin-bottom: 15px;
+    color: #555;
+    text-align: justify;
+}
+
+
+
+/* carre-screen */
+/* footer-screen */
+/* Footer Styling */
+.footer {
+   
+    background-color:#0DA853;
+    padding: 20px 20px;
+    text-align: center;
+    height: 100%;
+}
+
+/* 4 Columns Section */
+.footer-columns {
+    display: flex;
+    justify-content: space-between; /* Centers the columns horizontally */
+    justify-items: start;
+    gap: 30px; /* Space between columns */
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Ensures columns wrap on smaller screens */
+}
+
+.footer-column {
+    text-align: left; /* Align content to the left for better readability */
+    flex: 1; /* Allows columns to grow/shrink equally */
+    
+}
+
+.footer-column h1 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: white;
+}
+.footer-column h3 {
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.footer-column p {
+    font-size: 14px;
+    color: #666;
+    color: white;
+
+}
+.footer-button {
+    display: inline-block; /* Ensures the button takes up space based on its content */
+    white-space: nowrap; /* Prevents text from wrapping to the next line */
+    padding: 10px 20px; /* Space around the text */
+    font-size: 12px;
+    color: black;
+    background-color: white;
+    border: 1px solid #0DA853; /* Define border with shorthand */
+    border-radius: 40px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    text-align: center; /* Center the text inside the button */
+    margin-bottom: 5px;
+}
+
+.footer-button:hover {
+    background-color: #FCD605;
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+
+
+/* Divider */
+.footer-divider {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+}
+
+/* Social Media and Links Row */
+.footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Ensures it wraps on smaller screens */
+    gap: 10px;
+    color: white;
+}
+
+.social-media {
+    display: flex;
+    display: flex; 
+  align-items: center; 
+  align-self: center; 
+  justify-content: center;
+    gap: 0px; /* Space between social icons */
+}
+.social-media h6 {
+    margin: 0 auto;
+    font-size: 12px;
+    font-weight: 100;
+    text-align: end;
+}
+
+.social-icon img {
+    width: 25px; /* Adjust size for icons */
+    height: 25px;
+    object-fit: contain;
+    transition: transform 0.3s ease; /* Animation for hover */
+}
+
+.social-icon img:hover {
+    transform: scale(1.2); /* Scale up on hover */
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px; /* Space between links */
+}
+
+.footer-link {
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+    color: white;
+
+}
+
+/* footer-screen */
+
+
+@media screen and (max-width: 768px) {
+    .event-card-container  {
+        display: block;
+    }
+    .card-container {
+        grid-template-columns: repeat(2, 1fr); /* Two cards per row on smaller screens */
+    }
+    .event-group{
+      
+        grid-template-columns: repeat(1, 1fr); 
+
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .document-card-container.active {
+        display: block;
+        width: 100%;
+    
+    }
+    .footer-divider{
+        overflow: hidden;
+        width: auto;
+    }
+    .externallink{
+        flex-direction: column; 
+        gap: 30px;
+    }
+    .card-container {
+        grid-template-columns: 1fr; /* One card per row on very small screens */
+    }
+    .projet-card-container {
+        grid-template-columns: 1fr; /* One card per row on very small screens */
+    }
+    
+    .wrapper {
+        display: block;
+        
+    }
+    .wrapper .item {
+        margin: 10px;
+        width: AUTO;
+    }
+    .logo-column{
+        display: block;
+
+    }
+    .description {
+        width: 80%;
+    }
+    .event-card-container  {
+        display: block;
+    }
+    .event-group{
+      
+        grid-template-columns: repeat(1, 1fr); 
+
+            }
+    .event-card{
+        padding: 20px;
+
+    }
+    .event-head{
+        padding: 20px;
+
+    
+    }
+    .document  {
+        display: block;
+        
+    }
+    .document-screen{
+        height: 100%;
+    }
+    .projet-screen{
+        height: 100%;
+    }
+    .slider-buttons-event {
+        
+        justify-content: center;
+    }
+    .mot_direct {
+        padding-top: 70px;
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding-bottom: 216px; /* Full viewport height */
+        /* Full viewport height */
+    
+    }
+    .image-container {
+        width: auto;
+        height: auto;
+        position: static;
+        padding-top: 10px;
+        overflow-x: hidden;
+    }
+    .desc{
+        width: 100%;
+        height: auto;
+    }
+    .descr{
+        width: 100%;
+
+
+    }
+    .description{
+        width: auto;
+
+    }
+    .projet-card-container.active {
+        display: flex
+;
+    flex-direction: column;
+    gap: 39px;
+    }
+    .content p  {
+        width: 400px;
+
+    }
+    .content h1  {
+        width: 400px;
+
+    }
+}
